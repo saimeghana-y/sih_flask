@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>First Flask App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: green;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* Using the border-radius property 
+           to draw the semi-circle*/
+        div {
+            height: 200px;
+            width: 100%;
+            border-radius: 0 0 100% 100%;
+            background-color: #EBF8E5;
+        }
+
+        #clicked {
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 15px 60px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<script>
+    function myFunction() {
+        var text1 = $('#text1').val();
+        $.ajax({
+            url: "/join",
+            type: "POST",
+            data: { text1: text1 }
+        }).done(function (response) {
+            var html = "<br><br><br><p> <b> RESULT : <b><p>";
+            response = response.result;
+            $.each(response, function (key, val) {
+                console.log(val);
+                html += "<p>" + val + "<p>"
+            });
+            html += "<br>";
+            $(".show-data").append(html);
+        });
+    };
+</script>
+
+<body>
+    <div class="wrapper" style="background-color: #EBF8E5;">
+        <div class="one">
+        <p>
+            <h2>Enter Text</h2>
+
+            <input type="text" id="text1" name="text1"><br><br>
+            <button id="clicked" onclick="myFunction()">Analyze</button>
+            </p>
+            <p class="show-data">
+        </p>
+    </div>
+    <div class="two">
+        <img src="" alt="">
+    </div>
+    </div>
+
+
+</body>
+
+</html>
