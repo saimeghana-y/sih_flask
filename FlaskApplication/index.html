@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>First Flask App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+        <div class="wrapper" style="background-color: #ebf8e5;text-align: center;" id="circle">
+              <h2 style="text-align: end;padding-right: 8px; padding-top:10% ;">Text </h2>
+              <h2 style="text-align: start; padding-top:10% ;">summarizer</h2>
+        </div>
+        <div id="input-container">
+            <div id="input-box">
+                <textarea name="" id="" cols="50" rows="22"></textarea>
+            </div>
+            <div  id="summary-btn-container">
+              <button type="submit"  class="btn">Summary</button>
+            </div>
+            <div id="output-box">
+                <textarea name="" id="" cols="50" rows="22"></textarea>
+            </div>
+        </div>
+        <div class="two">
+            <img src="" alt="" />
+        </div>
+    </div>
+    <script>
+      function myFunction() {
+        var text1 = $("#text1").val();
+        $.ajax({
+          url: "/join",
+          type: "POST",
+          data: { text1: text1 },
+        }).done(function (response) {
+          var html = "<br><br><br><p> <b> RESULT : <b><p>";
+          response = response.result;
+          $.each(response, function (key, val) {
+            console.log(val);
+            html += "<p>" + val + "<p>";
+          });
+          html += "<br>";
+          $(".show-data").append(html);
+        });
+      }
+    </script>
+  </body>
+</html>

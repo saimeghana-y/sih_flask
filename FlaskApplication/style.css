@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+}
+
+#input-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+    background: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#input-box {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#output-box {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Using the border-radius property 
+       to draw the semi-circle*/
+#circle {
+    height: 200px;
+    width: 100%;
+    border-radius: 0 0 100% 100%;
+    background-color: #ebf8e5;
+    font-family:'Roboto', sans-serif;
+}
+
+#clicked {
+    background-color: #04aa6d;
+    border: none;
+    color: white;
+    padding: 15px 60px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 30px;
+}
+
+
+#summary-btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #04aa6d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+textarea{
+    padding: 10px;
+    border-radius: 15px;
+    resize: none;
+    font-size: 16px;
+    border-color: #04aa6d;
+    border-width: 2px;
+}
