@@ -9,7 +9,7 @@ def do_something(text1):
     article.download() 
     article.parse() 
     article.nlp()
-    return article.summary
+    return article.text
 
 @app.route('/')
 def home():
