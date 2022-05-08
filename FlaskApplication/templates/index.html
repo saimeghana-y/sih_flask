@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>First Flask App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/style.css" />
+    <script>
+      function openSlideMenu() {
+        document.getElementById("menu").style.width = "350px";
+        document.getElementById("content").style.marginLeft = "350px";
+      }
+      function closeSlideMenu() {
+        document.getElementById("menu").style.width = "0";
+        document.getElementById("content").style.marginLeft = "0";
+      }
+      function summarize() {
+        var text1 = $('#input-text').val();
+        console.log(text1)
+        $.ajax({
+            url: "/summarize",
+            type: "POST",
+            data: { text1: text1 }
+        }).done(function (response) {
+            var html = "<br><br><br><p> <b> RESULT : <b><p>";
+            response = response.result;
+            $.each(response, function (key, val) {
+                console.log(val);
+                html += "<p>" + val + "<p>"
+            });
+            html += "<br>";
+            console.log(html)
+            $("#output-text").val(html);
+        });
+    };
+    </script>
+  </head>
+  <body>
+    <div>
+      <div>
+        <div id="content">
+          <span class="slide">
+            <a href="#" onclick="openSlideMenu()">
+              <i class="fas fa-bars"></i>
+            </a>
+          </span>
+          <div id="menu" class="nav">
+            <a href="#" class="close" onclick="closeSlideMenu()">
+              <i class="fas fa-times"></i>
+            </a>
+            <a href="#">Home</a>
+            <a href="#">Summarize Audio</a>
+            <a href="#">Summarize Video</a>
+            <a href="#">Summarize PDF</a>
+            <a href="#">Summarize Web Article</a>
+          </div>
+        </div>
+        <h2 float="right" style="padding-top: 30px">Text Summarizer</h2>
+      </div>
+      <form>
+        <div id="input-container">
+          <div id="input-box">
+            <textarea name="" id="input-text" cols="50" rows="18"></textarea>
+          </div>
+          <div id="summary-btn-container">
+            <a href-"#" class="summary-btn" onclick="summarize()">Summary</a>
+          </div>
+          <div id="output-box">
+            <textarea name="" id="output-text" cols="50" rows="18"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+<link
+  href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400&display=swap"
+  rel="stylesheet"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+  crossorigin="anonymous"
+></script>
