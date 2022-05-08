@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 #header {
     display: flex;
     flex-direction: column;
@@ -13,7 +17,7 @@
 #input-container {
     display: flex;
     flex-direction: row;
-    margin-top: 3%;
+    margin-top: 7%;
     background: none;
     margin-left: auto;
     margin-right: auto;
@@ -27,21 +31,6 @@
 #output-box {
     margin-left: auto;
     margin-right: auto;
-}
-
-.wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-/* Using the border-radius property 
-       to draw the semi-circle*/
-#circle {
-    height: 200px;
-    width: 100%;
-    border-radius: 0 0 100% 100%;
-    background-color: #ebf8e5;
-    font-family:'Roboto', sans-serif;
 }
 
 #clicked {
@@ -64,7 +53,7 @@
     align-items: center;
 }
 
-.btn{
+.summary-btn{
     padding: 10px;
     border-radius: 10px;
     background-color: #04aa6d;
@@ -82,4 +71,48 @@ textarea{
     font-size: 16px;
     border-color: #04aa6d;
     border-width: 2px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:800');
+
+.nav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	opacity: .9;
+	overflow-x: hidden;
+	padding-top: 60px;
+	transition: 0.7s;
+}
+.nav a {
+	display: block;
+	padding: 20px 30px;
+	font-size: 25px;
+	text-decoration: none;
+	color: #ccc;
+}
+.nav a:hover {
+	color: #fff;
+	transition: 0.4s;
+}
+.nav .close {
+	position: absolute;
+	top: 0;
+	right: 22px;
+	margin-left: 50px;
+	font-size: 30px
+}
+.slide a {
+	color: #000;
+	font-size: 36px;
+}
+#content {
+	padding: 20px;
+	transition: margin-left 0.7s;
+	overflow: hidden;
+    float: left;
 }
